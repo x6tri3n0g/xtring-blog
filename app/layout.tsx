@@ -1,6 +1,7 @@
-import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Head from './head'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,9 +15,35 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const header = (
+    <header>
+      <div>
+        <Link href="/">
+          <h1>Xtring's Blog</h1>
+        </Link>
+        <p>🤘🏻 Welcome to my Tech Blog</p>
+        <br />
+      </div>
+    </header>
+  )
+
+  const footer = (
+    <footer>
+      <div>
+        <br />
+        <h3>Developed by Xtring</h3>
+      </div>
+    </footer>
+  )
+
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <Head />
+      <body className={inter.className}>
+        {header}
+        {children}
+        {footer}
+      </body>
     </html>
   )
 }
