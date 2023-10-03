@@ -5,5 +5,5 @@ export default function Head() {
       <meta content="width-device-width, initial-scale=1" />
       <link rel="icon" href="./favicon.ico" />
     </>
-  )
+  );
 }

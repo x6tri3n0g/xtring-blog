@@ -1,6 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import { PostMetadata } from "./PostMetadata";
+import { PostMetadata } from './PostMetadata';
 
 export default function getPostMetadata(): PostMetadata[] {
   const targetPath = 'posts/';
@@ -16,7 +16,7 @@ export default function getPostMetadata(): PostMetadata[] {
       date: matterResult.data.date,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace('.md', ''),
-    }
+    };
   });
 
   return posts;

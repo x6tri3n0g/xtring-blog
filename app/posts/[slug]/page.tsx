@@ -1,6 +1,7 @@
 import fs from 'fs';
-import Markdown from 'markdown-to-jsx';
+import Markdown from 'react-markdown';
 import matter from 'gray-matter';
+
 import getPostMetadata from '@/components/getPostMetadata';
 
 const getPostContent = (slug: string) => {
@@ -9,12 +10,12 @@ const getPostContent = (slug: string) => {
   const content = fs.readFileSync(file, 'utf-8');
   const matterResult = matter(content);
   return matterResult;
-}
+};
 
 export const generateStaticParams = async () => {
   const posts = getPostMetadata();
   return posts.map((post) => ({ slug: post.slug }));
-}
+};
 
 interface Props {
   params: {
@@ -22,8 +23,8 @@ interface Props {
   };
 }
 
-export default function PostPage(props: Props) {
-  const slug = props.params.slug;
+export default function PostPage({ params }: Props) {
+  const { slug } = params;
   const post = getPostContent(slug);
   return (
     <main>
@@ -35,5 +36,5 @@ export default function PostPage(props: Props) {
         <Markdown>{post.content}</Markdown>
       </article>
     </main>
-  )
+  );
 }
